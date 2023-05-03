@@ -46,13 +46,13 @@ public class RobotContainer {
     return null;
   }
 
-  public static double drvX() {
+  public static double drvX() {//left joy left and right
     return drvStick.getRawAxis(DriverConstants.DriverX);
   }
-  public static double drvY() {
+  public static double drvY() {//left joystick forward back
     return drvStick.getRawAxis(DriverConstants.DriverY);
   }
-  public static double drvZ() {
+  public static double drvZ() {// right joystick left and right
     return drvStick.getRawAxis(DriverConstants.DriverZ);
   }
 }

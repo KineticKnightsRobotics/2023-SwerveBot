@@ -98,7 +98,7 @@ public class SwerveModule {
         target = SwerveModuleState.optimize(target, getState().angle);
 
 
-        if (Math.abs(target.speedMetersPerSecond) < 0.05) {
+        if (Math.abs(target.speedMetersPerSecond) > 0.05) {
             dMotor.set(target.speedMetersPerSecond / DriveConstants.maxVelocity); // Sets the value of the drive motor to target speed adjusted to be within the maximum velocity.
             tMotor.set(tPIDController.calculate(getTurnPosition(), target.angle.getRadians() )); //Sets the turning motor to the value calculated by the PID Controller
         }

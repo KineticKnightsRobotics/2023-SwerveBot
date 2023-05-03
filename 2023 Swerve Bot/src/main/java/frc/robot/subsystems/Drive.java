@@ -12,14 +12,17 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.SPI;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.ModuleConstants;
 
 public class Drive extends SubsystemBase {
 
   //Create Modules
-
+  double FR_Encoder;
+  double FL_Encoder;
+  double BL_Encoder;
+  double BR_Encoder;
   private final SwerveModule frontLeft = new SwerveModule(
     DriveConstants.FL_dMotor_ID,
     DriveConstants.FL_tMotor_ID,
@@ -64,6 +67,22 @@ public class Drive extends SubsystemBase {
     zeroGyro();
 
   }
+
+  @Override
+  public void periodic() {
+    FR_Encoder = frontLeft.getDrivePosition();
+    FL_Encoder = frontRight.getDrivePosition();
+    BR_Encoder = backLeft.getDrivePosition();
+    BL_Encoder = backRight.getDrivePosition();
+
+    SmartDashboard.putNumber("FR_Enc", FR_Encoder);
+    SmartDashboard.putNumber("FL_Enc", FL_Encoder);
+    SmartDashboard.putNumber("BR_Enc", BR_Encoder);
+    SmartDashboard.putNumber("BL_Enc", BL_Encoder);
+
+
+  }
+
 
   public void zeroGyro() {
     gyro.reset();
