@@ -57,6 +57,11 @@ public class SwerveModule {
         tPIDController.enableContinuousInput(0, Math.PI * 2);
         //This tells the PID Controller that the value loops back around to 0 at 2PI (1 full turn of a circle in radians)
 
+        dMotor.restoreFactoryDefaults();
+        tMotor.restoreFactoryDefaults();
+
+        dMotor.setSmartCurrentLimit(30);
+        tMotor.setSmartCurrentLimit(30);
     }
     public void ResetEncoders() {
         dEncoder.setPosition(0);
@@ -110,6 +115,16 @@ public class SwerveModule {
     public void stop() {
         dMotor.set(0);
         tMotor.set(0);
+    }
+
+    public void driveMotor (double speed){
+        dMotor.set(speed);
+    }
+    public void turnMotor (double speed){
+        tMotor.set(speed);
+    }
+    public void zeroRelativeEncoder (){
+        tEncoder.setPosition(0);
     }
 
 }

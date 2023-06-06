@@ -58,6 +58,7 @@ public class Drive extends SubsystemBase {
   );
 
   private final AHRS gyro = new AHRS(SPI.Port.kMXP);
+  public final SwerveModule[] GroupSwerveModules = {frontLeft, frontRight, backLeft, backRight};
 
   public Drive() {
     //Note: Figure out a way to sleep for 1 second before reseting gyro
@@ -86,5 +87,6 @@ public class Drive extends SubsystemBase {
     backLeft.stop();
     backRight.stop();
   }
+
 
 }

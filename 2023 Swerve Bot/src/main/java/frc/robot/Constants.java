@@ -70,15 +70,15 @@ public final class Constants {
      * t = turn
      *  IE: FL_dID = front left, drive motor, id
      */
-    public final static int FL_dMotor_ID = 0;
-    public final static int FR_dMotor_ID = 0;     //Driving MOTOR IDS
-    public final static int BL_dMotor_ID = 0;
-    public final static int BR_dMotor_ID = 0;
+    public final static int FL_dMotor_ID = 8;
+    public final static int FR_dMotor_ID = 2;     //Driving MOTOR IDS
+    public final static int BL_dMotor_ID = 6;
+    public final static int BR_dMotor_ID = 4;
 
-    public final static int FL_tMotor_ID = 0;
-    public final static int FR_tMotor_ID = 0;     //TURNING MOTOR IDS
-    public final static int BL_tMotor_ID = 0;
-    public final static int BR_tMotor_ID = 0;
+    public final static int FL_tMotor_ID = 7;
+    public final static int FR_tMotor_ID = 1;     //TURNING MOTOR IDS
+    public final static int BL_tMotor_ID = 5;
+    public final static int BR_tMotor_ID = 3;
 
     public final static boolean FL_dMotor_Reversed = false;
     public final static boolean FR_dMotor_Reversed = false;     //Are any motors turning the wrong way? Set the coresponding variable = 'true'
@@ -100,10 +100,10 @@ public final class Constants {
     public final static boolean BL_tEnc_Reversed = false;
     public final static boolean BR_tEnc_Reversed = false;
 
-    public final static int FL_absEncoder_ID = 0;
-    public final static int FR_absEncoder_ID = 0;     //ABSOLUTE ENCODER IDs
-    public final static int BL_absEncoder_ID = 0;
-    public final static int BR_absEncoder_ID = 0;
+    public final static int FL_absEncoder_ID = 4;
+    public final static int FR_absEncoder_ID = 1;     //ABSOLUTE ENCODER IDs
+    public final static int BL_absEncoder_ID = 3;
+    public final static int BR_absEncoder_ID = 2;
 
     public final static double FL_absEncoder_offset = 0; //Offset of absolute encoder in Radians
     public final static double FR_absEncoder_offset = 0;
