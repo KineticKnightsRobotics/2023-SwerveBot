@@ -10,7 +10,7 @@ import frc.robot.subsystems.SwerveModule;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class TurnModules extends CommandBase {
+public class Test_TurnModules extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drive m_subsystem;
 
@@ -19,7 +19,7 @@ public class TurnModules extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public TurnModules(Drive subsystem) {
+  public Test_TurnModules(Drive subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
