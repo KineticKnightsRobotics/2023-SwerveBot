@@ -40,7 +40,11 @@ public class RobotContainer {
     configureBindings();
   }
 
-  private void configureBindings() {}
+  private void configureBindings() {
+    drA.whileTrue(new Test_TurnModules(m_drive));
+    drB.whileTrue(new Test_ZeroREncoders(m_drive));
+    drX.whileTrue(new Test_DefaultPosition(m_drive));
+  }
 
   public Command getAutonomousCommand() {
     return null;
