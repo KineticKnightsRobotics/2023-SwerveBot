@@ -26,7 +26,7 @@ public class RobotContainer {
   // init driver controller
   public static Joystick drvStick = new Joystick(DriverConstants.DriverControllerPort);
   // driver buttons 
-  public JoystickButton drA = new JoystickButton(drvStick, DriverConstants.drA);
+  public static JoystickButton drA = new JoystickButton(drvStick, DriverConstants.drA);
   public JoystickButton drB = new JoystickButton(drvStick, DriverConstants.drB);
   public JoystickButton drX = new JoystickButton(drvStick, DriverConstants.drX);
   public JoystickButton drY = new JoystickButton(drvStick, DriverConstants.drY);

@@ -13,6 +13,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.ModuleConstants;
 
@@ -80,6 +81,8 @@ public class Drive extends SubsystemBase {
     SmartDashboard.putNumber("FL_Enc", FL_Encoder);
     SmartDashboard.putNumber("BR_Enc", BR_Encoder);
     SmartDashboard.putNumber("BL_Enc", BL_Encoder);
+
+    SmartDashboard.putBoolean("A Button: ", RobotContainer.drA.getAsBoolean());
 
 
   }

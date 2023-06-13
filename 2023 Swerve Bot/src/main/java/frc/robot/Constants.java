@@ -23,7 +23,7 @@ public final class Constants {
     public static final int DriverY = 1;
     public static final int DriverZ = 4;
 
-    public static final int drA = 2;
+    public static final int drA = 1;
     public static final int drB = 2;
     public static final int drY = 4;
     public static final int drX = 3;
