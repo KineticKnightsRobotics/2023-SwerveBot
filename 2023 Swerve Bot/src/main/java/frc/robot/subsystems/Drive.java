@@ -102,6 +102,9 @@ public class Drive extends SubsystemBase {
     frontRight.setState(states[1]);
     backLeft.setState(states[2]);
     backRight.setState(states[3]);
+    for (int x = 0; x <= 3; x += 1) {
+      SmartDashboard.putString("State | Module # " + Integer.toString(x), states[x].toString());
+    }
   }
   public void stopModules() {
     frontLeft.stop();
