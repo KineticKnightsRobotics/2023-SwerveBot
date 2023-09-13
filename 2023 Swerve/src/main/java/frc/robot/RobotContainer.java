@@ -17,7 +17,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Drive m_Drive = new Drive();
 
-  public Joystick driverJoystick = new Joystick(Constants.OperatorConstants.kDriverControllerPort);
+  public static Joystick driverJoystick = new Joystick(Constants.OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -34,13 +34,13 @@ public class RobotContainer {
     return Autos.exampleAuto(m_exampleSubsystem);
   }
 
-  public double DriverLeftStickX(){
+  public static double DriverLeftStickX(){
     return driverJoystick.getRawAxis(OperatorConstants.kLeftXAxisID);
   }
-  public double DriverLeftStickY(){
+  public static double DriverLeftStickY(){
     return driverJoystick.getRawAxis(OperatorConstants.kLeftYAxisID);
   }
-  public double DriverRightStickX(){
+  public static double DriverRightStickX(){
     return driverJoystick.getRawAxis(OperatorConstants.kRightXAxisID);
   }
 }
