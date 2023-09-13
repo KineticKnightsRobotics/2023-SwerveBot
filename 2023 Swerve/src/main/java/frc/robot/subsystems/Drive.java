@@ -13,11 +13,8 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 
 import com.kauailabs.navx.frc.AHRS;
-import com.swervedrivespecialties.swervelib.Mk4ModuleConfiguration;
 import com.swervedrivespecialties.swervelib.Mk4iSwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.SwerveModule;
-import com.swervedrivespecialties.swervelib.Mk3SwerveModuleHelper.GearRatio;
-import com.swervedrivespecialties.swervelib.SdsModuleConfigurations;
 
 
 //TODO: Documentation
@@ -45,27 +42,27 @@ public class Drive extends SubsystemBase {
 
     public Drive() {
         m_frontLeft = Mk4iSwerveModuleHelper.createNeo(
-            Mk4iSwerveModuleHelper.GearRatio.L1,//TODO: What gear ratio are we using? 
+            Mk4iSwerveModuleHelper.GearRatio.L1, 
             FrontLeftModule.D_MotorID, 
             FrontLeftModule.R_MotorID, 
             FrontLeftModule.CancoderID, 
             FrontLeftModule.CancoderOffset);
         m_frontRight = Mk4iSwerveModuleHelper.createNeo(
-            Mk4iSwerveModuleHelper.GearRatio.L1,//TODO: What gear ratio are we using? 
+            Mk4iSwerveModuleHelper.GearRatio.L1, 
             FrontRightModule.D_MotorID,
             FrontRightModule.R_MotorID,
             FrontRightModule.CancoderID,
             FrontRightModule.CancoderOffset
         );
         m_backLeft = Mk4iSwerveModuleHelper.createNeo(
-            Mk4iSwerveModuleHelper.GearRatio.L1,//TODO: What gear ratio are we using? 
+            Mk4iSwerveModuleHelper.GearRatio.L1, 
             BackLeftModule.D_MotorID,
             BackLeftModule.R_MotorID,
             BackLeftModule.CancoderID,
             BackLeftModule.CancoderOffset
         );
         m_backRight = Mk4iSwerveModuleHelper.createNeo(
-            Mk4iSwerveModuleHelper.GearRatio.L1,//TODO: What gear ratio are we using? 
+            Mk4iSwerveModuleHelper.GearRatio.L1,
             BackRightModule.D_MotorID,
             BackRightModule.R_MotorID,
             BackRightModule.CancoderID,
