@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.Drive;
 import frc.robot.RobotContainer;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class JoystickDrive extends CommandBase {
@@ -14,8 +15,12 @@ public class JoystickDrive extends CommandBase {
     @Override
     public void execute(){
         double translateX = RobotContainer.DriverLeftStickX();
-        double translateY = RobotContainer.DriverRightStickX();
+        double translateY = RobotContainer.DriverLeftStickY();
         double steer      = RobotContainer.DriverRightStickX();
+
+        translateX *= 0.1;
+        translateY *= 0.1;
+        steer *=      0.1;
 
         m_subsystem.setChassisSpeed(
             ChassisSpeeds.fromFieldRelativeSpeeds(
@@ -25,6 +30,9 @@ public class JoystickDrive extends CommandBase {
                 m_subsystem.getGyroRotation()
             )
         );
+        SmartDashboard.putNumber("Joystick Translate X", translateX);
+        SmartDashboard.putNumber("Joystick Translate Y", translateY);
+        SmartDashboard.putNumber("Steer", steer);
     }
     @Override
     public void end(boolean interrupted){

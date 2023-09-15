@@ -17,11 +17,13 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Drive m_Drive = new Drive();
 
+  private final JoystickDrive m_JoystickDrive = new JoystickDrive(m_Drive);
+
   public static Joystick driverJoystick = new Joystick(Constants.OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-
+    m_Drive.setDefaultCommand(m_JoystickDrive);
     // Configure the trigger bindings
     configureBindings();
   }

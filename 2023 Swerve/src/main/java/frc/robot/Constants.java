@@ -25,7 +25,7 @@ public final class Constants {
   public static class DriveConstants {
 
     public static final double MaxVoltage = 12.0; //Max drive motor voltage.
-    public static final double MaxChassisSpeed = 2.0; //Max Chassis speed in M/S
+    public static final double MaxChassisSpeed = 1.0; //Max Chassis speed in M/S
 
     public static final double TrackWidth = Units.metersToInches(0); //distance from left side to right side of the drive train //TODO: fish this measurements out of the old code
     public static final double TrackLength= Units.metersToInches(0); //distance from front to back of the drive train
@@ -36,25 +36,25 @@ public final class Constants {
       public static final int D_MotorID = 8;
       public static final int R_MotorID = 7;
       public static final int CancoderID= 4;
-      public static final double CancoderOffset = -Math.toRadians(0); //TODO: Measure offsets.
+      public static final double CancoderOffset = -Math.toRadians(299.091); //TODO: Measure offsets.
     }
     public static class FrontRightModule {
       public static final int D_MotorID = 2;
       public static final int R_MotorID = 1;
       public static final int CancoderID= 1;
-      public static final double CancoderOffset = -Math.toRadians(0);
+      public static final double CancoderOffset = -Math.toRadians(316.582);
     }
     public static class BackLeftModule {
       public static final int D_MotorID = 6;
       public static final int R_MotorID = 5;
       public static final int CancoderID= 2;
-      public static final double CancoderOffset = -Math.toRadians(0);
+      public static final double CancoderOffset = -Math.toRadians(91.054);
     }
     public static class BackRightModule {
       public static final int D_MotorID = 4;
       public static final int R_MotorID = 3;
       public static final int CancoderID= 3;
-      public static final double CancoderOffset = -Math.toRadians(0);
+      public static final double CancoderOffset = -Math.toRadians(71.542);
     }
   }
 
