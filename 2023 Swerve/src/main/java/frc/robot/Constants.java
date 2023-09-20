@@ -31,7 +31,8 @@ public final class Constants {
     public static final double TrackLength= Units.metersToInches(0); //distance from front to back of the drive train
 
     public static final int NavXID = 0;
-
+  }
+  public static class SwerveConstants{
     public static class FrontLeftModule {
       public static final int D_MotorID = 8;
       public static final int R_MotorID = 7;
@@ -57,7 +58,8 @@ public final class Constants {
       public static final double CancoderOffset = -Math.toRadians(71.542);
     }
   }
-
-
-
 }
+
+
+
+
