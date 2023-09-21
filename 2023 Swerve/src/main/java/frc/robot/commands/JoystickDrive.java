@@ -27,7 +27,7 @@ public class JoystickDrive extends CommandBase {
                 translateX,
                 translateY,
                 steer,
-                m_subsystem.getGyroRotation()
+                m_subsystem.getRotation2d()
             )
         );
         SmartDashboard.putNumber("Joystick Translate X", translateX);

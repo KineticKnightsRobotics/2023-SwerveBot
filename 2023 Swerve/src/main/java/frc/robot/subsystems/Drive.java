@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.SwerveConstants.*;
 
@@ -10,6 +11,7 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -19,46 +21,48 @@ import com.kauailabs.navx.frc.AHRS;
 //TODO: Documentation
 
 public class Drive extends SubsystemBase {
-    public static SwerveModule m_frontLeft = new SwerveModule(
-        "Front Left",
-        FrontLeftModule.D_MotorID,
-        FrontLeftModule.R_MotorID,
-        FrontLeftModule.CancoderID,
-        FrontLeftModule.CancoderOffset,
-        FrontLeftModule.DriveInverted,
-        FrontLeftModule.TurnInverted,
-        FrontLeftModule.EncoderInverted
-    );
-    public static SwerveModule m_frontRight = new SwerveModule(
-        "Front Right",
-        FrontRightModule.D_MotorID,
-        FrontRightModule.R_MotorID,
-        FrontRightModule.CancoderID,
-        FrontRightModule.CancoderOffset,
-        FrontRightModule.DriveInverted,
-        FrontRightModule.TurnInverted,
-        FrontRightModule.EncoderInverted
-    );
-    public static SwerveModule m_backLeft = new SwerveModule(
-        "Back Left",
-        BackLeftModule.D_MotorID,
-        BackLeftModule.R_MotorID,
-        BackLeftModule.CancoderID,
-        BackLeftModule.CancoderOffset,
-        BackLeftModule.DriveInverted,
-        BackLeftModule.TurnInverted,
-        BackLeftModule.EncoderInverted
-    );
-    public static SwerveModule m_backRight = new SwerveModule(
-        "Back Right",
-        BackRightModule.D_MotorID,
-        BackRightModule.R_MotorID,
-        BackRightModule.CancoderID,
-        BackRightModule.CancoderOffset,
-        BackRightModule.DriveInverted,
-        BackRightModule.TurnInverted,
-        BackRightModule.EncoderInverted
-    );
+    public static SwerveModule[] modules = {
+        new SwerveModule(
+            "Front Left",
+            FrontLeftModule.D_MotorID,
+            FrontLeftModule.R_MotorID,
+            FrontLeftModule.CancoderID,
+            FrontLeftModule.CancoderOffset,
+            FrontLeftModule.DriveInverted,
+            FrontLeftModule.TurnInverted,
+            FrontLeftModule.EncoderInverted
+        ),
+        new SwerveModule(
+            "Front Right",
+            FrontRightModule.D_MotorID,
+            FrontRightModule.R_MotorID,
+            FrontRightModule.CancoderID,
+            FrontRightModule.CancoderOffset,
+            FrontRightModule.DriveInverted,
+            FrontRightModule.TurnInverted,
+            FrontRightModule.EncoderInverted
+        ),
+        new SwerveModule(
+            "Back Left",
+            BackLeftModule.D_MotorID,
+            BackLeftModule.R_MotorID,
+            BackLeftModule.CancoderID,
+            BackLeftModule.CancoderOffset,
+            BackLeftModule.DriveInverted,
+            BackLeftModule.TurnInverted,
+            BackLeftModule.EncoderInverted
+        ),
+        new SwerveModule(
+            "Back Right",
+            BackRightModule.D_MotorID,
+            BackRightModule.R_MotorID,
+            BackRightModule.CancoderID,
+            BackRightModule.CancoderOffset,
+            BackRightModule.DriveInverted,
+            BackRightModule.TurnInverted,
+            BackRightModule.EncoderInverted
+        )
+    };
 
     ShuffleboardTab drive_Tab = Shuffleboard.getTab("DriveTrain");
 
@@ -78,19 +82,38 @@ public class Drive extends SubsystemBase {
     public static ChassisSpeeds m_ChassisSpeeds = new ChassisSpeeds(0.0,0.0,0.0);
 
     public Drive() {
-
+        resetGyro();
     }
+
     public void resetGyro(){
         m_Gyro.zeroYaw();
     }
-    public Rotation2d getGyroRotation(){
-        return Rotation2d.fromDegrees(360 - m_Gyro.getYaw());
+    public double getHeading() {
+        return Math.IEEEremainder(DriveConstants.NavxReversed ? m_Gyro.getAngle() * -1 : m_Gyro.getAngle(), 360);
+    }
+    public Rotation2d getRotation2d(){
+        return new Rotation2d(getHeading());
+    }
+    public void stopModules(){
+        for (int i=0;i<modules.length;i++){
+            modules[i].stop();
+        }
     }
     public void setChassisSpeed(ChassisSpeeds chassisSpeeds){
         m_ChassisSpeeds = chassisSpeeds;
     }
     @Override
     public void periodic(){
-        
+        SmartDashboard.putNumber("Robot Heading", getHeading());
+        SmartDashboard.putNumber("Robot Speed X", m_ChassisSpeeds.vxMetersPerSecond);
+        SmartDashboard.putNumber("Robot Speed Y", m_ChassisSpeeds.vyMetersPerSecond);
+
+        SwerveModuleState[] newStates = m_chassisKinematics.toSwerveModuleStates(m_ChassisSpeeds);
+        SwerveDriveKinematics.desaturateWheelSpeeds(newStates, DriveConstants.MaxChassisSpeed);
+
+        for (int i = 0;i<=modules.length;i++){
+            modules[i].setState(newStates[i]);
+            modules[i].putData2Dashboard();
+        }
     }
 }
