@@ -18,9 +18,9 @@ public class JoystickDrive extends CommandBase {
         double translateY = RobotContainer.DriverLeftStickY();
         double steer      = RobotContainer.DriverRightStickX();
 
-        translateX *= 0.1;
-        translateY *= 0.1;
-        steer *=      0.1;
+        translateX *= 0.5;
+        translateY *= 0.5;
+        steer *=      0.0005;
 
         m_subsystem.setChassisSpeed(
             ChassisSpeeds.fromFieldRelativeSpeeds(

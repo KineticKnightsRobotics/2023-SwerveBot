@@ -98,12 +98,19 @@ public class Drive extends SubsystemBase {
         for (int i=0;i<modules.length;i++){
             modules[i].stop();
         }
+        /*
+        modules[0].setState(new SwerveModuleState(0.0,new Rotation2d(0)));
+        modules[1].setState(new SwerveModuleState(0.0,new Rotation2d(0)));
+        modules[2].setState(new SwerveModuleState(0.0,new Rotation2d(0)));
+        modules[3].setState(new SwerveModuleState(0.0,new Rotation2d(0)));
+        */
     }
     public void setChassisSpeed(ChassisSpeeds chassisSpeeds){
         m_ChassisSpeeds = chassisSpeeds;
     }
     @Override
     public void periodic(){
+        SmartDashboard.putString("Chassis Speed", m_ChassisSpeeds.toString());
         SmartDashboard.putNumber("Robot Heading", getHeading());
         SmartDashboard.putNumber("Robot Speed X", m_ChassisSpeeds.vxMetersPerSecond);
         SmartDashboard.putNumber("Robot Speed Y", m_ChassisSpeeds.vyMetersPerSecond);
@@ -111,7 +118,7 @@ public class Drive extends SubsystemBase {
         SwerveModuleState[] newStates = m_chassisKinematics.toSwerveModuleStates(m_ChassisSpeeds);
         SwerveDriveKinematics.desaturateWheelSpeeds(newStates, DriveConstants.MaxChassisSpeed);
 
-        for (int i = 0;i<=modules.length;i++){
+        for (int i = 0;i<modules.length;i++){
             modules[i].setState(newStates[i]);
             modules[i].putData2Dashboard();
         }

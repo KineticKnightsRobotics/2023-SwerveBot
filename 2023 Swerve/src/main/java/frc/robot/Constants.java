@@ -50,7 +50,7 @@ public final class Constants {
       public static final int R_MotorID = 7;
       public static final int CancoderID= 4;
       public static final double CancoderOffset = -Math.toRadians(299.091);
-      public static final boolean DriveInverted = false;
+      public static final boolean DriveInverted = true;
       public static final boolean TurnInverted = false;
       public static final boolean EncoderInverted = false;
     }
@@ -68,7 +68,7 @@ public final class Constants {
       public static final int R_MotorID = 5;
       public static final int CancoderID= 2;
       public static final double CancoderOffset = -Math.toRadians(91.054);
-      public static final boolean DriveInverted = false;
+      public static final boolean DriveInverted = true;
       public static final boolean TurnInverted = false;
       public static final boolean EncoderInverted = false;
     }

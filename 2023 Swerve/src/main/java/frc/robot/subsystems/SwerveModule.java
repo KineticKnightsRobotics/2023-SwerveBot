@@ -19,6 +19,9 @@ public class SwerveModule extends SubsystemBase {
     private final RelativeEncoder driveEncoder;
     private final RelativeEncoder turningEncoder;
 
+    private final boolean driveReversed;
+    private final boolean turnReversed;
+
     private final PIDController modulePID;
 
     private final CANCoder absoluteEncoder;
@@ -43,7 +46,12 @@ public class SwerveModule extends SubsystemBase {
         this.absoluteEncoderReversed = encoderReversed;
         this.modulePID = new PIDController(0.5, 0.0, 0.0);
         modulePID.enableContinuousInput(-Math.PI, Math.PI);
-
+        this.driveReversed= driveReversed;
+        this.turnReversed = turnReversed;
+                
+        driveMotor.setInverted(driveReversed);
+        turningMotor.setInverted(turnReversed);
+        //turningMotor.setInverted(false);
         
     }
 
