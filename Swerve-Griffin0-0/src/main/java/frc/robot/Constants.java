@@ -52,18 +52,18 @@ public class Constants {
         public static final boolean kGyroReversed = true;
 
         // Turning encoder offsets
-        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = Math.toRadians(299.091);
-        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = Math.toRadians(91.054);
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = Math.toRadians(316.582);
-        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = Math.toRadians(192.7632);
+        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = Math.toRadians(0);
+        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = Math.toRadians(0);
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = Math.toRadians(0);
+        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = Math.toRadians(0);
 
         // Robot speeds
         public static final double kPhysicalMaxSpeedMetersPerSecond = 3.6; // PHYSICAL max speed of the modules (safety cap)
-        public static final double kTeleDriveMaxSpeedMetersPerSecond = 1; // Max speed set for teleop
+        public static final double kTeleDriveMaxSpeedMetersPerSecond = 2; // Max speed set for teleop
 
         // Robot turning speeds
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
-        public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
+        public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 2;
 
         // Robot acceleration
         public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
